@@ -22,7 +22,7 @@
         protected function tearDown()
         {
             Stylist::deleteAll();
-            // Client::deleteAll();
+            Client::deleteAll();
         }
 
         function testSave()
@@ -84,7 +84,7 @@
             $stylist_name = "Bob";
             $test_stylist = new Stylist($stylist_name);
             $test_stylist->save();
-            $stylist_name_2 = "Bill";
+            $stylist_name_2 = "Bob";
             $test_stylist_2 = new Stylist($stylist_name_2);
             $test_stylist_2->save();
 

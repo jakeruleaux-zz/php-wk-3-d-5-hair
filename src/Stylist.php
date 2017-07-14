@@ -22,10 +22,10 @@
             return $this->stylist_name;
         }
 
-        function setId()
-        {
-            $this->id = intval($id);
-        }
+        // function setId()
+        // {
+        //     $this->id = intval($id);
+        // }
 
         function getId()
         {
@@ -49,8 +49,8 @@
             $stylists = array();
             foreach($returned_stylists as $stylist) {
                 $stylist_name = $stylist['name'];
-                var_dump($stylist_name);
                 $id = $stylist['id'];
+                var_dump($id);
                 $new_stylist = new Stylist($stylist, $id);
                 array_push($stylists, $new_stylist);
             }
