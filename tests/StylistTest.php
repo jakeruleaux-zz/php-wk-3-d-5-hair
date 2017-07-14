@@ -174,5 +174,25 @@
                 $this->assertEquals([], $result);
 
         }
+
+        function testDelete()
+        {
+            //
+            $stylist_name = "Bob";
+            $test_stylist = new Stylist($stylist_name);
+            $test_stylist->save();
+
+            $stylist_name_2 = "Bill";
+            $test_stylist_2 = new Stylist($stylist_name_2);
+            $test_stylist_2->save();
+
+
+            //
+            $test_stylist->delete();
+
+            //
+            $this->assertEquals([$test_stylist_2], Stylist::getAll());
+        }
+
     }
 ?>

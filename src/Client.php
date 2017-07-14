@@ -93,6 +93,16 @@
             }
         }
 
+        function delete()
+        {
+            $executed = $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getStylistId()};");
+            if ($executed) {
+               return true;
+            } else {
+               return false;
+            }
+        }
+
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM clients;");
