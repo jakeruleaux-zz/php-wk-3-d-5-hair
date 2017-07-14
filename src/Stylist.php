@@ -73,6 +73,31 @@
                return $found_stylist;
            }
 
+        function getClients()
+           {
+               $clients = Array();
+               $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE client_id = {$this->getId()};");
+               foreach($returned_clients as $client) {
+                   $client_name = $client['name'];
+                   $client_id = $client['id'];
+                   $stylist_id = $client['stylist_id'];
+                   $new_client = new Client($client_name, $Stylist_id, $client_id);
+                   array_push($clients, $new_client);
+               }
+               return $clients;
+           }
+
+        function update($new_stylist_name)
+            {
+                $executed = $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_stylist_name}' WHERE id = {$this->getId()};");
+                    if ($executed) {
+                    $this->setStylistName($new_stylist_name);
+                    return true;
+                    } else {
+                    return false;
+                    }
+            }
+
         static function deleteAll()
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists;");

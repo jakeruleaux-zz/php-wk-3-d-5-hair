@@ -96,7 +96,7 @@
         }
 
         function testFind()
-          {
+        {
               //Arrange
               $stylist_name = "Bob";
               $stylist_name_2 = "Bill";
@@ -110,7 +110,47 @@
 
               //Assert
               $this->assertEquals($test_stylist, $result);
-          }
+        }
+
+        function testGetClients()
+        {
+              //
+              $stylist_name = "Bob";
+              $test_stylist = new Stylist($stylist_name);
+              $test_stylist->save();
+
+              $test_stylist_id = $test_stylist->getId();
+
+              $client = "Sue";
+              $test_client = new Client($client, $test_stylist_id);
+              $test_client->save();
+
+              $client_2 = "Meet with boss";
+              $test_client_2 = new Client($client_2, $test_stylist_id);
+              $test_client_2->save();
+
+              //
+              $result = $test_stylist->getTasks();
+
+              //
+              $this->assertEquals([$test_client, $test_client_2], $result);
+        }
+
+        function testUpdate()
+        {
+              //
+              $stylist_name = "Bob";
+              $test_stylist = new Stylist($stylist_name);
+              $test_stylist->save();
+
+              $new_stylist_name = "Bill";
+
+              //
+              $test_stylist->update($new_stylist_name);
+
+              //
+              $this->assertEquals("Bill", $test_stylist->getName());
+        }
 
 
         function testDeleteAll()
