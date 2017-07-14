@@ -31,6 +31,17 @@
         {
             return $this->stylist_id;
         }
+
+        function save()
+        {
+            $executed = $GLOBALS['DB']->exec("INSERT INTO stylists (stylist) VALUES ('{$this->getName()}')");
+            if ($executed) {
+                 $this->id= $GLOBALS['DB']->lastInsertId();
+                 return true;
+            } else {
+                 return false;
+            }
+        }
     }
 
 
