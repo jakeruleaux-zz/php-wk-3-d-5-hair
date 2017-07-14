@@ -121,16 +121,16 @@
 
               $test_stylist_id = $test_stylist->getId();
 
-              $client = "Sue";
+              $client_name = "Sue";
               $test_client = new Client($client, $test_stylist_id);
               $test_client->save();
 
-              $client_2 = "Meet with boss";
-              $test_client_2 = new Client($client_2, $test_stylist_id);
+              $client_name_2 = "Jane";
+              $test_client_2 = new Client($client_name_2, $test_stylist_id);
               $test_client_2->save();
 
               //
-              $result = $test_stylist->getTasks();
+              $result = $test_stylist->getClients();
 
               //
               $this->assertEquals([$test_client, $test_client_2], $result);
@@ -149,7 +149,7 @@
               $test_stylist->update($new_stylist_name);
 
               //
-              $this->assertEquals("Bill", $test_stylist->getName());
+              $this->assertEquals("Bill", $test_stylist->getStylistName());
         }
 
 

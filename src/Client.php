@@ -6,6 +6,7 @@
         private $stylist_id;
         private $id;
 
+
         function __construct($client_name, $stylist_id, $id = null)
         {
             $this->client_name = $client_name;
@@ -35,7 +36,7 @@
 
         function save()
         {
-            $executed = $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES ('{$this->getClientName()}', {$this->getStylistId})");
+            $executed = $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES ('{$this->getClientName()}', {$this->getStylistId()})");
             if ($executed) {
                  $this->id= $GLOBALS['DB']->lastInsertId();
                  return true;
@@ -48,11 +49,12 @@
        {
            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
            $clients = array();
+           var_dump($clients);
            foreach($returned_clients as $client) {
-               $name = $client['name'];
+               $client_name = $client['name'];
                $stylist_id = $client['stylist_id'];
                $id = $client['id'];
-               $new_client = new Category($name, $id);
+               $new_client = new Category($client_name, $stylist_id, $id);
                array_push($clients, $new_client);
            }
            return $clients;

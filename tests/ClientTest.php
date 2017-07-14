@@ -19,17 +19,22 @@
     class ClientTest extends PHPUnit_Framework_TestCase
     {
 
-        // protected function tearDown()
-        // {
-        //     Stylist::deleteAll();
-        //     Client::deleteAll();
-        // }
+        protected function tearDown()
+        {
+            Client::deleteAll();
+            Stylist::deleteAll();
+        }
 
         function testSave()
         {
             //
+            $stylist_name = "Bob";
+            $test_stylist = new Stylist($stylist_name);
+            $test_stylist->save();
+
             $client_name = "Sue";
-            $test_client = new Client($client_name);
+            $stylist_id = $test_stylist->getId();
+            $test_client = new Client($client_name, $stylist_id);
 
             //
             $executed = $test_client->save();
@@ -37,6 +42,25 @@
             //
             $this->assertTrue($executed, "Client not saved to database");
         }
+
+        function testGetStylistId()
+      {
+          //
+          $stylist_name = "Bob";
+          $test_stylist = new Stylist($stylist_name);
+          $test_stylist->save();
+
+          $stylist_id = $test_stylist->getId();
+          $client_name = "Sue";
+          $test_client = new Client($client_name, $stylist_id);
+          $test_client->save();
+
+          //
+          $result = $test_client->getId();
+
+          //
+          $this->assertEquals($stylist_id, $result);;
+      }
 
         function testGetClientName()
         {
