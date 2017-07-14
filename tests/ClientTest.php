@@ -196,5 +196,29 @@
             $this->assertEquals([], $result);
         }
 
+        // function testDelete()
+        // {
+        //     //
+        //     $stylist_name = "Bob";
+        //     $test_stylist = new Stylist($stylist_name);
+        //     $test_stylist->save();
+        //
+        //     $stylist_id = $test_stylist->getId();
+        //
+        //     $client_name = "Bob";
+        //     $test_client = new Stylist($client_name, $stylist_id);
+        //     $test_client->save();
+        //
+        //     $client_name_2 = "Bill";
+        //     $test_client_2 = new Stylist($client_name_2, $stylist_id);
+        //     $test_client_2->save();
+        //
+        //
+        //     //
+        //     $test_client->delete();
+        //
+        //     //
+        //     $this->assertEquals([$test_client_2], Client::getAll());
+        // }
     }
 ?>
