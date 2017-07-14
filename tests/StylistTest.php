@@ -19,11 +19,11 @@
     class StylistTest extends PHPUnit_Framework_TestCase
     {
 
-        protected function tearDown()
-        {
-            Task::deleteAll();
-            Category::deleteAll();
-        }
+        // protected function tearDown()
+        // {
+        //     Stylist::deleteAll();
+        //     Client::deleteAll();
+        // }
 
         function testSave()
         {
@@ -45,10 +45,10 @@
             $test_stylist = new Stylist($stylist_name);
 
             //
-            $result = $test_stylist->getStylistName;
+            $result = $test_stylist->getStylistName();
 
             //
-            $this->assertEqual($stylist_name, $result);
+            $this->assertEquals($stylist_name, $result);
         }
 
         function testSetStylistName()
@@ -62,7 +62,7 @@
             $result = $test_stylist->getStylistName();
 
             //
-            $this->assertEqual("Bill", $result);
+            $this->assertEquals("Bill", $result);
         }
 
         function testGetStylistId()
@@ -70,12 +70,29 @@
             //
             $stylist_id = "Bob";
             $test_stylist = new Stylist($stylist_id);
-
+            $test_stylist->save();
             //
             $result = $test_stylist->getId();
 
             //
-            $this->assertEqual(true, is_numeric($result));
+            $this->assertEquals(true, is_numeric($result));
         }
+
+        // function testGetAll()
+        // {
+        //     //
+        //     $stylist_name = "Bob";
+        //     $stylist_name2 = "Bill";
+        //     $test_stylist = new Stylist($stylist_name);
+        //     $test_stylist->save();
+        //     $test_stylist2 = new Stylist($stylist_name2);
+        //     $test_stylist2->save();
+        //
+        //     //
+        //     $result = $Stylist::getAll();
+        //
+        //     //
+        //     $this->assertEquals([$test_stylist, $test_stylist2], $result);
+        // }
     }
 ?>

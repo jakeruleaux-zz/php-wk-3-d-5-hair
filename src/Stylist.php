@@ -4,12 +4,12 @@
 
     {
         private $stylist_name;
-        private $stylist_id;
+        private $id;
 
-        function __construct($stylist_name, $stylist_id = null)
+        function __construct($stylist_name, $id = null)
         {
             $this->stylist_name = $stylist_name;
-            $this->stylist_id = $stylist_id;
+            $this->id = $id;
         }
 
         function setStylistName($new_stylist_name)
@@ -22,19 +22,19 @@
             return $this->stylist_name;
         }
 
-        function setStylistId()
+        function setId()
         {
-            $this->stylist_id = intval($stylist_id);
+            $this->id = intval($id);
         }
 
-        function getStylistId()
+        function getId()
         {
-            return $this->stylist_id;
+            return $this->id;
         }
 
         function save()
         {
-            $executed = $GLOBALS['DB']->exec("INSERT INTO stylists (stylist) VALUES ('{$this->getName()}')");
+            $executed = $GLOBALS['DB']->exec("INSERT INTO stylists (name) VALUES ('{$this->getStylistName()}')");
             if ($executed) {
                  $this->id= $GLOBALS['DB']->lastInsertId();
                  return true;
@@ -42,6 +42,18 @@
                  return false;
             }
         }
+
+        static function getAll()
+          {
+            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
+            $stylists = array();
+            foreach($returned_stylists as $stylist) {
+                $stylist_name = $stylist['stylist_name'];
+                $new_stylist = new Stylist($stylist);
+                array_push($stylists, $new_stylist);
+            }
+            return $stylists;
+          }
     }
 
 
