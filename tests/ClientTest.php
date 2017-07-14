@@ -56,7 +56,7 @@
           $test_client->save();
 
           //
-          $result = $test_client->getId();
+          $result = $test_client->getStylistId();
 
           //
           $this->assertEquals($stylist_id, $result);;

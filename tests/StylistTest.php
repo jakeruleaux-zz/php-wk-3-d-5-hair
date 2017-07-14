@@ -81,10 +81,12 @@
         function testGetAll()
         {
             //
+
             $stylist_name = "Bob";
             $test_stylist = new Stylist($stylist_name);
             $test_stylist->save();
-            $stylist_name_2 = "Bob";
+
+            $stylist_name_2 = "Bill";
             $test_stylist_2 = new Stylist($stylist_name_2);
             $test_stylist_2->save();
 
@@ -99,9 +101,10 @@
         {
               //Arrange
               $stylist_name = "Bob";
-              $stylist_name_2 = "Bill";
               $test_stylist = new Stylist($stylist_name);
               $test_stylist->save();
+
+              $stylist_name_2 = "Bill";
               $test_stylist_2 = new Stylist($stylist_name_2);
               $test_stylist_2->save();
 

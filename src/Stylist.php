@@ -22,10 +22,10 @@
             return $this->stylist_name;
         }
 
-        // function setId()
-        // {
-        //     $this->id = intval($id);
-        // }
+        function setId()
+        {
+            $this->id = intval($id);
+        }
 
         function getId()
         {
@@ -34,7 +34,7 @@
 
         function save()
         {
-            $executed = $GLOBALS['DB']->exec("INSERT INTO stylists (name) VALUES ('{$this->getStylistName()}')");
+            $executed = $GLOBALS['DB']->exec("INSERT INTO stylists (name) VALUES ('{$this->getStylistName()}');");
             if ($executed) {
                  $this->id= $GLOBALS['DB']->lastInsertId();
                  return true;
@@ -50,8 +50,8 @@
             foreach($returned_stylists as $stylist) {
                 $stylist_name = $stylist['name'];
                 $id = $stylist['id'];
-                var_dump($id);
-                $new_stylist = new Stylist($stylist, $id);
+                var_dump($stylist_name);
+                $new_stylist = new Stylist($stylist_name, $id);
                 array_push($stylists, $new_stylist);
             }
             return $stylists;
