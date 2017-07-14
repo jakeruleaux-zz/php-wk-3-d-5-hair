@@ -101,7 +101,7 @@
         }
 
         function testGetAll()
-      {
+        {
           //
           $stylist_name = "Bob";
           $test_stylist = new Stylist($stylist_name);
@@ -122,7 +122,32 @@
 
           //
           $this->assertEquals([$test_client, $test_client_2], $result);
-      }
+        }
+
+
+        function testFind()
+        {
+            //
+            $stylist_name = "Bob";
+            $test_stylist = new Stylist($stylist_name);
+            $test_stylist->save();
+
+            $stylist_id = $test_stylist->getId();
+
+            $client_name = "Sue";
+            $test_client = new Client($client_name, $stylist_id);
+            $test_client->save();
+
+            $client_name_2 = "Jane";
+            $test_client_2 = new Client($client_name_2, $stylist_id);
+            $test_client_2->save();
+
+            //
+            $result = Client::find($test_client->getId());
+
+            //
+            $this->assertEquals($test_client, $result);
+         }
 
         function testDeleteAll()
         {

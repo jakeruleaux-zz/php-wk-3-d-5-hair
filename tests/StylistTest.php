@@ -99,7 +99,7 @@
 
         function testFind()
         {
-              //Arrange
+              //
               $stylist_name = "Bob";
               $test_stylist = new Stylist($stylist_name);
               $test_stylist->save();
@@ -108,10 +108,10 @@
               $test_stylist_2 = new Stylist($stylist_name_2);
               $test_stylist_2->save();
 
-              //Act
+              //
               $result = Stylist::find($test_stylist->getId());
 
-              //Assert
+              //
               $this->assertEquals($test_stylist, $result);
         }
 
