@@ -49,6 +49,7 @@
             $stylists = array();
             foreach($returned_stylists as $stylist) {
                 $stylist_name = $stylist['name'];
+                var_dump($stylist_name);
                 $id = $stylist['id'];
                 $new_stylist = new Stylist($stylist, $id);
                 array_push($stylists, $new_stylist);
@@ -56,9 +57,25 @@
             return $stylists;
           }
 
+        static function find($search_id)
+           {
+               $found_stylist = null;
+               $returned_stylists = $GLOBALS['DB']->prepare("SELECT * FROM stylists WHERE id = :id");
+               $returned_stylists->bindParam(':id', $search_id, PDO::PARAM_STR);
+               $returned_stylists->execute();
+               foreach($returned_stylists as $stylist) {
+                   $stylist_name = $stylist['name'];
+                   $stylist_id = $stylist['id'];
+                   if ($stylist_id == $search_id) {
+                     $found_stylist = new Stylist($stylist_name, $stylist_id);
+                   }
+               }
+               return $found_stylist;
+           }
+
         static function deleteAll()
         {
-            $GLOBALS['DB']->exec("DELETE FROM categories;");
+            $GLOBALS['DB']->exec("DELETE FROM stylists;");
         }
     }
 
