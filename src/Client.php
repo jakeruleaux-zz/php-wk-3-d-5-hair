@@ -27,5 +27,16 @@
         {
             return $this->id;
         }
+
+        function save()
+        {
+            $executed = $GLOBALS['DB']->exec("INSERT INTO clients (name) VALUES ('{$this->getClientName()}')");
+            if ($executed) {
+                 $this->id= $GLOBALS['DB']->lastInsertId();
+                 return true;
+            } else {
+                 return false;
+            }
+        }
     }
  ?>
