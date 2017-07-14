@@ -65,9 +65,9 @@
            return $clients;
           }
 
-       static function find($search_id)
+        static function find($search_id)
           {
-            //   $found_client = null;
+
               $returned_clients = $GLOBALS['DB']->prepare("SELECT * FROM clients WHERE id = :id");
               $returned_clients->bindParam(':id', $search_id, PDO::PARAM_STR);
               $returned_clients->execute();
@@ -81,6 +81,17 @@
               }
               return $found_client;
           }
+
+        function update($new_client_name)
+        {
+            $executed = $GLOBALS['DB']->exec("UPDATE clients SET name = '{$new_client_name}' WHERE id = {$this->getId()};");
+            if ($executed) {
+            $this->setClientName($new_client_name);
+                return true;
+            } else {
+                return false;
+            }
+        }
 
         static function deleteAll()
         {
