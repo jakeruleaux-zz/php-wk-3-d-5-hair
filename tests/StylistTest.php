@@ -78,21 +78,21 @@
             $this->assertEquals(true, is_numeric($result));
         }
 
-        // function testGetAll()
-        // {
-        //     //
-        //     $stylist_name = "Bob";
-        //     $stylist_name2 = "Bill";
-        //     $test_stylist = new Stylist($stylist_name);
-        //     $test_stylist->save();
-        //     $test_stylist2 = new Stylist($stylist_name2);
-        //     $test_stylist2->save();
-        //
-        //     //
-        //     $result = $Stylist::getAll();
-        //
-        //     //
-        //     $this->assertEquals([$test_stylist, $test_stylist2], $result);
-        // }
+        function testGetAll()
+        {
+            //
+            $stylist_name = "Bob";
+            $stylist_name_2 = "Bill";
+            $test_stylist = new Stylist($stylist_name);
+            $test_stylist->save();
+            $test_stylist_2 = new Stylist($stylist_name_2);
+            $test_stylist_2->save();
+
+            //
+            $result = Stylist::getAll();
+
+            //
+            $this->assertEquals([$test_stylist, $test_stylist_2], $result);
+        }
     }
 ?>

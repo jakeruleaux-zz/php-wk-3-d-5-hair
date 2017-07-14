@@ -48,12 +48,18 @@
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
             $stylists = array();
             foreach($returned_stylists as $stylist) {
-                $stylist_name = $stylist['stylist_name'];
-                $new_stylist = new Stylist($stylist);
+                $stylist_name = $stylist['name'];
+                $id = $stylist['id'];
+                $new_stylist = new Stylist($stylist, $id);
                 array_push($stylists, $new_stylist);
             }
             return $stylists;
           }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM categories;");
+        }
     }
 
 
