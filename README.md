@@ -6,7 +6,7 @@ By Jacob Ruleaux
 
 Description
 
-The Hair Salon app shows current stylists as well as a list of each stylists' clients.
+The Hair Salon app shows current stylists as well as a list of each stylists' clients. The progam will allow user to add stylists or clients, or delete either.
 
 Setup/Installation Requirements
 
@@ -15,15 +15,20 @@ Select the dropdown (green box) "Clone or download"
 Copy the link for the GitHub repository
 Open Terminal on your computer
 In Terminal, perform the following steps:
-type 'cd desktop' and press enter.
-type 'git clone' then copy the repository link and press enter.
-type 'cd php-address-book' to access the path on your computer
-type 'php -S localhost:8000' to open local server.
-in your Address Bar type 'localhost:8000/Word-Count' to view app
-//ADD FURTHER INSTRUCTION!!!!!!!//
+Type 'cd desktop' and press enter.
+Type 'git clone' then copy the repository link and press enter.
+Type 'cd php-address-book' to access the path on your computer.
+Type 'localhost:8888/phpmyadmin' and select the import tab near the top of the screen. In the import tab browse for 'hair_salon.sql.zip'.
+Select this file and click the 'go' button at the bottom.
+In Terminal type /Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot.
+In mysql type 'SHOW DATABASES;' to confirm that you have the 'hair_salon' database.
+In mysql type 'USE hair_salon;'.
+In your Address Bar type 'localhost:8888' to view app.
+The paths in MAMP may need to be adjusted. In MAMP click the 'web server' tab. Make sure you have the appropriate document root path, ex: 'User/File-directory/file/web'.
+
 Known Bugs
 
-No known bugs in current version.
+The program requires a localhost to function. It was designed with MAMP in mind. Similar programs may support it.
 
 Support and contact details
 
@@ -31,7 +36,7 @@ Feel free to contact the author with questions or concerns at jakeruleaux@hotmai
 
 Technologies Used
 
-The application relies on PHP, Silex, Twig with some Bootstrap for styling and basic HTML for display.
+The application relies on MAMP, PHP, Silex, Twig with some Bootstrap for styling and basic HTML for display.
 
 License
 
