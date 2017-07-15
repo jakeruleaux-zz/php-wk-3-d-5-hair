@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Hair Salon</title>
+</head>
+<body>
+    <h1>These people need a hair cut!</h1>
+
+    <p>Add a new client to your list:</p>
+
+    <form action="/clients" method="post">
+        <label for="client_name">client name:</label>
+        <input id="client_name" name="client_name" type="text">
+
+        <button type="submit">Put 'em on the list'</button>
+    </form>
+
+    {% if clientss is not empty %}
+        <p>Here's your victims:</p>
+        <ul>
+            {% for client in clients %}
+                <li><a href="/clients/{{ client_name.getId }}">{{ client.getClienttName }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+      <p>We're done!</p>
+    {% endif %}
+
+</body>
+</html>
