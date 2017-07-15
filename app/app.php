@@ -30,7 +30,7 @@
       $client = new Client($client_name, $id = null, $stylist_id);
       $client->save();
       $stylist = stylist::find($stylist_id);
-      return $app['twig']->render('stylist.html.twig', array('stylists' => $stylist, 'clients' => $stylist->getClients()));
+      return $app['twig']->render('stylists.html.twig', array('stylists' => $stylist, 'clients' => $stylist->getClients()));
   });
 
   $app->get("/stylists", function() use ($app) {
