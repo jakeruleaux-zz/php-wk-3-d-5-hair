@@ -50,7 +50,6 @@
             foreach($returned_stylists as $stylist) {
                 $stylist_name = $stylist['name'];
                 $id = $stylist['id'];
-                var_dump($stylist_name);
                 $new_stylist = new Stylist($stylist_name, $id);
                 array_push($stylists, $new_stylist);
             }
@@ -64,7 +63,7 @@
                $returned_stylists->bindParam(':id', $search_id, PDO::PARAM_STR);
                $returned_stylists->execute();
                foreach($returned_stylists as $stylist) {
-                   $stylist_name = $stylist['name'];
+                   $stylist_name = $stylist['stylist_name'];
                    $stylist_id = $stylist['id'];
                    if ($stylist_id == $search_id) {
                      $found_stylist = new Stylist($stylist_name, $stylist_id);
@@ -76,12 +75,13 @@
         function getClients()
            {
                $clients = Array();
+               var_dump($clients);
                $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
                foreach($returned_clients as $client) {
-                   $client_name = $client['name'];
+                   $client_name = $client['client_name'];
                    $client_id = $client['id'];
                    $stylist_id = $client['stylist_id'];
-                   $new_client = new Client($client_name, $stylist_id, $client_id);
+                   $new_client = new Client($client_name, $client_id, $stylist_id);
                    array_push($clients, $new_client);
                }
                return $clients;

@@ -14,7 +14,7 @@
         <button type="submit">Put 'em on the list'</button>
     </form>
 
-    {% if clientss is not empty %}
+    {% if clients is not empty %}
         <p>Here's your victims:</p>
         <ul>
             {% for client in clients %}
@@ -24,6 +24,6 @@
     {% else %}
       <p>We're done!</p>
     {% endif %}
-
+    <p><a href='/'>Home</a></p>
 </body>
 </html>

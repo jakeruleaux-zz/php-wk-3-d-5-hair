@@ -41,7 +41,7 @@
 
         function save()
         {
-            $executed = $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES ('{$this->getClientName()}', {$this->getStylistId()})");
+            $executed = $GLOBALS['DB']->exec("INSERT INTO clients (client_name, stylist_id) VALUES ('{$this->getClientName()}', {$this->getStylistId()});");
             if ($executed) {
                  $this->id= $GLOBALS['DB']->lastInsertId();
                  return true;
@@ -54,11 +54,11 @@
          {
            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
            $clients = array();
-           var_dump($clients);
            foreach($returned_clients as $client) {
-               $client_name = $client['name'];
+               $client_name = $client['client_name'];
                $stylist_id = $client['stylist_id'];
                $id = $client['id'];
+               var_dump($client_name);
                $new_client = new Client($client_name, $stylist_id, $id);
                array_push($clients, $new_client);
            }
@@ -72,7 +72,7 @@
               $returned_clients->bindParam(':id', $search_id, PDO::PARAM_STR);
               $returned_clients->execute();
               foreach($returned_clients as $client) {
-                  $client_name = $client['name'];
+                  $client_name = $client['client_name'];
                   $stylist_id = $client['stylist_id'];
                   $id = $client['id'];
                   if ($id == $search_id) {
