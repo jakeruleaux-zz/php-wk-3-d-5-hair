@@ -79,9 +79,10 @@
                $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
                foreach($returned_clients as $client) {
                    $client_name = $client['name'];
-                   $client_id = $client['id'];
                    $stylist_id = $client['stylist_id'];
-                   $new_client = new Client($client_name, $client_id, $stylist_id);
+                   $client_id = $client['id'];
+                //    $stylist_id = $client['stylist_id'];
+                   $new_client = new Client($client_name, $stylist_id, $client_id);
                    array_push($clients, $new_client);
                }
                return $clients;

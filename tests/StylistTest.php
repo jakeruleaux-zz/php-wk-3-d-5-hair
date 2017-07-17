@@ -122,14 +122,14 @@
               $test_stylist = new Stylist($stylist_name);
               $test_stylist->save();
 
-              $test_stylist_id = $test_stylist->getId();
+              $stylist_id = $test_stylist->getId();
 
               $client_name = "Sue";
-              $test_client = new Client($client_name, $test_stylist_id);
+              $test_client = new Client($client_name, $stylist_id);
               $test_client->save();
 
               $client_name_2 = "Jane";
-              $test_client_2 = new Client($client_name_2, $test_stylist_id);
+              $test_client_2 = new Client($client_name_2, $stylist_id);
               $test_client_2->save();
 
               //

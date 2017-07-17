@@ -26,7 +26,7 @@
       });
 
       $app->get("/clients", function() use ($app) {
-          return $app['twig']->render('client.html.twig', array('clients' => Client::getAll()));
+          return $app['twig']->render('clients.html.twig', array('clients' => Client::getAll()));
       });
 
       $app->post("/clients", function() use ($app) {
@@ -36,7 +36,7 @@
           $client->save();
         //   var_dump($client);
           $stylist = Stylist::find($stylist_id);
-          return $app['twig']->render('clients.html.twig', array('stylists' => $stylist, 'clients' => $stylist->getClients()));
+          return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
       });
 
       $app->get("/stylists", function() use ($app) {
