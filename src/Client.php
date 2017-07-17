@@ -1,6 +1,7 @@
 <?php
 
     class Client
+
     {
         private $client_name;
         private $stylist_id;
@@ -41,7 +42,7 @@
 
         function save()
         {
-            $executed = $GLOBALS['DB']->exec("INSERT INTO clients (client_name, stylist_id) VALUES ('{$this->getClientName()}', {$this->getStylistId()});");
+            $executed = $GLOBALS['DB']->exec("INSERT INTO clients (name, stylist_id) VALUES ('{$this->getClientName()}', {$this->getStylistId()});");
             if ($executed) {
                  $this->id= $GLOBALS['DB']->lastInsertId();
                  return true;
@@ -55,7 +56,7 @@
            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
            $clients = array();
            foreach($returned_clients as $client) {
-               $client_name = $client['client_name'];
+               $client_name = $client['name'];
                $stylist_id = $client['stylist_id'];
                $id = $client['id'];
                var_dump($client_name);
@@ -72,7 +73,7 @@
               $returned_clients->bindParam(':id', $search_id, PDO::PARAM_STR);
               $returned_clients->execute();
               foreach($returned_clients as $client) {
-                  $client_name = $client['client_name'];
+                  $client_name = $client['name'];
                   $stylist_id = $client['stylist_id'];
                   $id = $client['id'];
                   if ($id == $search_id) {
@@ -100,7 +101,7 @@
             //     return false;
             // }
             // $executed = $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
-            if (!$executed) {
+            if ($executed) {
                 return true;
             } else {
                return false;

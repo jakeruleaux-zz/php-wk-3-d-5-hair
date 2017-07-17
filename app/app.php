@@ -26,7 +26,7 @@
       });
 
       $app->get("/clients", function() use ($app) {
-          return $app['twig']->render('clients.html.twig', array('clients' => Client::getAll()));
+          return $app['twig']->render('client.html.twig', array('clients' => Client::getAll()));
       });
 
       $app->post("/clients", function() use ($app) {
