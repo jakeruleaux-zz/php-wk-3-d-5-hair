@@ -18,7 +18,10 @@
         <p>Here's your victims:</p>
         <ul>
             {% for client in clients %}
-                <li><a href="/clients/{{ client_name.getId }}">{{ client.getClientName }}</a></li>
+                <li><a href="/clients/{{ client.getId }}">{{ client.getClientName }}</a></li>
+
+                <li><a href="/clients/{{ client.getId }}">{{ client.getClientName }}</a></li>
+
             {% endfor %}
         </ul>
     {% else %}
