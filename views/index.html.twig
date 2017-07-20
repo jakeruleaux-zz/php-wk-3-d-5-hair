@@ -24,8 +24,12 @@
     {% else %}
       <p>No one is working!</p>
     {% endif %}
-    <p><a href="/stylists">Click here</a> to see stylists.</p>
+    <!-- <p><a href="/stylists">Click here</a> to see stylists.</p> -->
     <p><a href="/clients">Click here</a> to see clients.</p>
+
+    <form action='/delete_stylists' method='post'>
+             <button type='submit' class='btn-info'>Clear</button>
+         </form>
 
 </body>
 </html>

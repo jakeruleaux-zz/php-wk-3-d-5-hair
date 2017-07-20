@@ -46,7 +46,7 @@
         $client->save();
         var_dump($client);
         $stylist = Stylist::find($stylist_id);
-        return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
+        return $app['twig']->render('clients.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
       });
 
     $app->get("/stylists", function() use ($app) {
