@@ -7,7 +7,7 @@
 
     <p>Add a new client to your list:</p>
 
-    <form action="/clients" method="post">
+    <form action="/clients" method="post" required>
         <label for="client_name">client name:</label>
         <input id="client_name" name="client_name" type="text">
 
@@ -19,9 +19,6 @@
         <ul>
             {% for client in clients %}
                 <li><a href="/clients/{{ client.getId }}">{{ client.getClientName }}</a></li>
-
-                <li><a href="/clients/{{ client.getId }}">{{ client.getClientName }}</a></li>
-
             {% endfor %}
         </ul>
     {% else %}

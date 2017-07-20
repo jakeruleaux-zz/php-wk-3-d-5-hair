@@ -24,7 +24,7 @@
 
         function setId()
         {
-            $this->id = intval($id);
+            $this->id = ($id);
         }
 
         function getId()
@@ -98,7 +98,7 @@
                     }
             }
 
-            function delete()
+        function delete()
             {
                 $executed = $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
                 if (!$executed) {

@@ -3,7 +3,7 @@
     <title>Hair Salon</title>
 </head>
 <body>
-    <h1>{{ name.getStylistName }}</h1>
+    <h1>{{ stylist.getStylistName }}</h1>
 
     {% if clients is not empty %}
         <p>These people need a hair cut:</p>
@@ -17,7 +17,7 @@
     <h4>Who else needs a hair cut?</h4>
 
     <form action='/clients' method='post'>
-        <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId() }}">
+        <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId }}">
         <label for='client_name'>Client Name</label>
         <input id='client_name' name='client_name' type='text'>
 

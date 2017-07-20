@@ -29,7 +29,7 @@
 
         function setId()
         {
-            $this->id = intval($id);
+            $this->id = ($id);
         }
 
         function getId()
@@ -115,10 +115,3 @@
         }
     }
  ?>
-
-
-
-
-
-
- 

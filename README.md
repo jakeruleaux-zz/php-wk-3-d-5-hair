@@ -6,7 +6,7 @@ By Jacob Ruleaux
 
 * Description;
 
-* The Hair Salon app shows current stylists as well as a list of each stylists' clients. The progam will allow user to add stylists or clients, or delete either.
+* The Hair Salon app shows current stylists as well as a list of each stylists' clients. The program will allow user to add stylists or clients, or delete either.
 
 * Setup/Installation Requirements
 

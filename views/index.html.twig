@@ -9,7 +9,7 @@
 
     <form action="/stylists" method="post">
         <label for="sylist_name">Stylist name:</label>
-        <input id="stylist_name" name="stylist_name" type="text">
+        <input id="stylist_name" name="stylist_name" type="text" required>
 
         <button type="submit">Add</button>
     </form>
@@ -24,7 +24,7 @@
     {% else %}
       <p>No one is working!</p>
     {% endif %}
-    <p><a href="/stylists">Click here</a>to see stylists.</p>
+    <p><a href="/stylists">Click here</a> to see stylists.</p>
     <p><a href="/clients">Click here</a> to see clients.</p>
 
 </body>
